@@ -8,7 +8,7 @@ task main()
 {
 
 int numCorners;
-numCorners = 0; //Number of Corners
+numCorners = 0;
 
 nVolume = 4; //resets sound volume so woops can play.
 
@@ -18,7 +18,7 @@ while(true)
 	{
 		if(SensorValue(rightSonicSensor) < 11) // if right is less than 10 cm, then turn left
 		{
-			numCorners = numCorners + 1; //When it senses it needs to turn left, it will add to variable numCorners
+			numCorners = numCorners + 1;
 			nMotorEncoder[motorC] = 0;
 			while(nMotorEncoder[motorC] < 180)
 			{
@@ -28,10 +28,10 @@ while(true)
 		}
 		motor[motorC] = 0;
 		motor[motorB] = 0;
-		wait1Msec(200); //to make sure it doesn't accidentally sense the walls again and get confused
+		wait1Msec(100); //to make sure it doesn't accidentally sense the walls again and get confused
 		if(SensorValue(rightSonicSensor) > 11) //if right ultrasonic sensor detects more than 15 cm, turn right
 		{
-			numCorners = numCorners + 1; //When it senses it needs to turn right, it will add to variable numCorners
+			numCorners = numCorners + 1;
 			nMotorEncoder[motorB] = 0;
 			while(nMotorEncoder[motorB] < 150)
 			{
@@ -79,7 +79,7 @@ while(true)
 			{
 				motor[motorB] = 0;
 				motor[motorC] = 0;
-				wait1Msec(100); //this is to make sure robot is relatively straight when stopping in the end zone
+				wait1Msec(100);
 
 				nMotorEncoder[motorC] = 0;
 				while(nMotorEncoder[motorC] > -360)
