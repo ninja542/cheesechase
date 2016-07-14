@@ -47,26 +47,26 @@ while(true)
 	{
 		if(SensorValue(rightLightSensor) < 41) // controls right light sensor for line following
 		{
-			motor[motorC] = -100;
+			motor[motorC] = -25;
 			motor[motorB] = 0;
 		}
 
 		if(SensorValue(rightLightSensor) > 41)
 		{
-			motor[motorC] = -100;
-			motor[motorB] = -100;
+			motor[motorC] = -25;
+			motor[motorB] = -25;
 		}
 
 		if(SensorValue(leftLightSensor) < 41) // controls left light sensor for line following like above, but in the opposite direction
 		{
 			motor[motorC] = 0;
-			motor[motorB] = -100;
+			motor[motorB] = -25;
 		}
 
 		if(SensorValue(leftLightSensor) > 41)
 		{
-			motor[motorC] = -100;
-			motor[motorB] = -100;
+			motor[motorC] = -25;
+			motor[motorB] = -25;
 		}
 
 		if(SensorValue(rightLightSensor) > 60 && SensorValue(leftLightSensor) > 60) //detects the aluminum foil
