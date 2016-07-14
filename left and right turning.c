@@ -13,7 +13,7 @@ while(true)
 		if(SensorValue(rightSonicSensor) < 11) // if right is less than 10 cm, then turn left
 		{
 			nMotorEncoder[motorC] = 0;
-			while(nMotorEncoder[motorC] < 170)
+			while(nMotorEncoder[motorC] < 180)
 			{
 				motor[motorC] = 50;
 				motor[motorB] = -50;
@@ -21,11 +21,11 @@ while(true)
 		}
 		motor[motorC] = 0;
 		motor[motorB] = 0;
-		wait1Msec(200); //to make sure it doesn't accidentally sense the walls again and get confused
+		wait1Msec(100); //to make sure it doesn't accidentally sense the walls again and get confused
 		if(SensorValue(rightSonicSensor) > 11) //if right ultrasonic sensor detects more than 15 cm, turn right
 		{
 			nMotorEncoder[motorB] = 0;
-			while(nMotorEncoder[motorB] < 170)
+			while(nMotorEncoder[motorB] < 150)
 			{
 				motor[motorC] = -50;
 				motor[motorB] = 50;

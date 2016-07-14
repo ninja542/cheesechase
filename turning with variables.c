@@ -6,9 +6,38 @@
 
 task main()
 {
+	int frontseen; // to store whether it sees less than 15 cm // 1 = true 0 = false
+	int rightseen; // to store whether it sees less than 9 cm // 1 = true 0 = false
 
-// line following
+	frontseen = 0;
+	rightseen = 0;
+
 while(true)
+{
+	if(SensorValue(frontSonicSensor) < 15) //if both ultrasonic sensors detect walls, turn left
+	{
+		frontseen = 1
+		if(SensorValue(rightSonicSensor) <= 9)
+		{
+			rightseen = 1
+			nMotorEncoder[motorC] = 0;
+			while(nMotorEncoder[motorC] < 170)
+			{
+				motor[motorC] = 50;
+				motor[motorB] = -50;
+			}
+		}
+		if(SensorValue(rightSonicSensor) > 9) //if right ultrasonic sensor detects nothing, turn right
+		{
+			nMotorEncoder[motorB] = 0;
+			while(nMotorEncoder[motorB] < 170)
+			{
+				motor[motorC] = -50;
+				motor[motorB] = 50;
+			}
+		}
+	}
+	else //continue line following
 	{
 		if(SensorValue(rightLightSensor) < 41) // controls right light sensor for line following
 		{
@@ -34,5 +63,7 @@ while(true)
 			motor[motorB] = 0;
 		}
 	}
+}
+
 
 }

@@ -6,9 +6,18 @@
 
 task main()
 {
-
-// line following
 while(true)
+{
+	if(SensorValue(frontSonicSensor) < 15 && SensorValue(rightSonicSensor) > 9) //if both ultrasonic sensors detect walls, turn left
+	{
+		nMotorEncoder[motorB] = 0;
+		while(nMotorEncoder[motorB] < 170)
+		{
+			motor[motorC] = -50;
+			motor[motorB] = 50;
+		}
+	}
+	else //continue line following
 	{
 		if(SensorValue(rightLightSensor) < 41) // controls right light sensor for line following
 		{
@@ -34,5 +43,7 @@ while(true)
 			motor[motorB] = 0;
 		}
 	}
+}
+
 
 }

@@ -33,6 +33,19 @@ while(true)
 			motor[motorC] = -100;
 			motor[motorB] = 0;
 		}
+
+		if(SensorValue(rightLightSensor) < 41 && SensorValue(leftLightSensor) < 41)
+		{
+			nMotorEncoder[motorC] = 0;
+			while(nMotorEncoder[motorC] > -360)
+			{
+				motor[motorC] = -50;
+				motor[motorB] = -50;
+			}
+				motor[motorC] = 0;
+				motor[motorB] = 0;
+				wait1Msec(10000);
+		}
 	}
 
 }
