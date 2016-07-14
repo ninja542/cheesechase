@@ -47,28 +47,24 @@ while(true)
 			motor[motorC] = -100;
 			motor[motorB] = 0;
 		}
-		wait1Msec(500);
 
 		if(SensorValue(rightLightSensor) > 41)
 		{
 			motor[motorC] = 0;
 			motor[motorB] = -100;
 		}
-		wait1Msec(500);
 
 		if(SensorValue(leftLightSensor) < 41) // controls left light sensor for line following like above, but in the opposite direction
 		{
 			motor[motorC] = 0;
 			motor[motorB] = -100;
 		}
-		wait1Msec(500);
 
 		if(SensorValue(leftLightSensor) > 41)
 		{
 			motor[motorC] = -100;
 			motor[motorB] = 0;
 		}
-		wait1Msec(500);
 
 		if(SensorValue(rightLightSensor) > 60 && SensorValue(leftLightSensor) > 60)
 		{
