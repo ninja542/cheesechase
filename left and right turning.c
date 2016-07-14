@@ -80,20 +80,16 @@ while(true)
 		{
 			if(SensorValue(rightLightSensor) < 41 && SensorValue(leftLightSensor) < 41) //sees if it has crossed the green line yet
 			{
-				motor[motorB] = 0;
-				motor[motorC] = 0;
-				wait1Msec(100); //braking so it goes straighter and doesn't run off track
-
 				nMotorEncoder[motorC] = 0;
-				while(nMotorEncoder[motorC] > -360) //moves forward one rotation
-				{
-					motor[motorC] = -100;
-					motor[motorB] = -100;
-				}
-			motor[motorC] = 0;
-			motor[motorB] = 0;
-			nxtDisplayStringAt(0, 31, "Corners = %d", numCorners); //displays # of corners
-			wait1Msec(10000);
+					while(nMotorEncoder[motorC] > -360) //moves forward one rotation
+					{
+						motor[motorC] = -100;
+						motor[motorB] = -100;
+					}
+				motor[motorC] = 0;
+				motor[motorB] = 0;
+				nxtDisplayStringAt(0, 31, "Corners = %d", numCorners); //displays # of corners
+				wait1Msec(10000);
 			}
 		}
 	}
