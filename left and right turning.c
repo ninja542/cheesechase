@@ -22,8 +22,10 @@ while(true)
 			motor[motorB] = 0;
 			wait1Msec(100); //make sure it's at full stop so it can turn accurately
 			numCorners = numCorners + 1; //add 1 to numCorners variable for counting corners
-			nMotorEncoder[motorC] = 0;
-			while(nMotorEncoder[motorC] < 170)
+			motor[motorC] = 50;
+			motor[motorB] = -50;
+			wait1Msec(100);
+			while(SensorValue(leftLightSensor) > 41)
 			{
 				motor[motorC] = 50;
 				motor[motorB] = -50;
@@ -31,12 +33,14 @@ while(true)
 		}
 		motor[motorC] = 0;
 		motor[motorB] = 0;
-		wait1Msec(100); //to make sure it doesn't accidentally sense the walls again and get confused
+		wait1Msec(250); //to make sure it doesn't accidentally sense the walls again and get confused
 		if(SensorValue(rightSonicSensor) > 11) //if right ultrasonic sensor detects more than 15 cm, turn right
 		{
 			numCorners = numCorners + 1; //ad 1 to numCorners variable for counting corners
-			nMotorEncoder[motorB] = 0;
-			while(nMotorEncoder[motorB] < 150)
+			motor[motorC] = -50;
+			motor[motorB] = 50;
+			wait1Msec(100);
+			while(SensorValue(rightLightSensor) > 41)
 			{
 				motor[motorC] = -50;
 				motor[motorB] = 50;
@@ -47,26 +51,26 @@ while(true)
 	{
 		if(SensorValue(rightLightSensor) < 41) // controls right light sensor for line following
 		{
-			motor[motorC] = -100;
+			motor[motorC] = -50;
 			motor[motorB] = 0;
 		}
 
 		if(SensorValue(rightLightSensor) > 41)
 		{
-			motor[motorC] = 0;
-			motor[motorB] = -100;
+			motor[motorC] = -50;
+			motor[motorB] = -50;
 		}
 
 		if(SensorValue(leftLightSensor) < 41) // controls left light sensor for line following like above, but in the opposite direction
 		{
 			motor[motorC] = 0;
-			motor[motorB] = -100;
+			motor[motorB] = -50;
 		}
 
 		if(SensorValue(leftLightSensor) > 41)
 		{
-			motor[motorC] = -100;
-			motor[motorB] = 0;
+			motor[motorC] = -50;
+			motor[motorB] = -50;
 		}
 
 		if(SensorValue(rightLightSensor) > 60 && SensorValue(leftLightSensor) > 60) //detects the aluminum foil
