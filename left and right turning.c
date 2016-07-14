@@ -53,7 +53,7 @@ while(true)
 
 		if(SensorValue(rightLightSensor) > 41)
 		{
-			motor[motorC] = 0;
+			motor[motorC] = -100;
 			motor[motorB] = -100;
 		}
 
@@ -66,7 +66,7 @@ while(true)
 		if(SensorValue(leftLightSensor) > 41)
 		{
 			motor[motorC] = -100;
-			motor[motorB] = 0;
+			motor[motorB] = -100;
 		}
 
 		if(SensorValue(rightLightSensor) > 60 && SensorValue(leftLightSensor) > 60) //detects the aluminum foil
